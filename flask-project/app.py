@@ -1,14 +1,19 @@
-from flask import Flask, request, jsonify
-from flask_sqlalchemy import SQLAlchemy
+from flask import Flask
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
-db = SQLAlchemy(app)
 
 
 @app.route("/")
+def index():
+    return "<h1>Index Page!<h1>"
+
+@app.route('/hello')
 def hello():
-    return "Hello, World!"
+    return 'Hello, World'
+
+@app.route('/users')
+def user():
+    return 'user'
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)
